@@ -1,0 +1,41 @@
+package ta227;
+
+const TA227_OPEN = 1;
+const TA227_CLOSE = 2;
+const TA227_READ = 4;
+const TA227_ITERATE = 7;
+
+request open_req {
+	required u32 unknown1 = 1;
+	required u32 unknown2 = 2;
+} = 1;
+
+response open_resp {
+	required u32 result = 1;
+} = 1;
+
+request close_req {
+} = 2;
+
+response close_resp {
+	required u32 result = 1;
+} = 2;
+
+request read_req {
+	required u32 unit = 1;
+	required u32 size = 2;
+} = 4;
+
+response read_resp {
+	required u32 result = 1;
+	required u8 data(65535) = 16;
+} = 4;
+
+request iterate_req {
+} = 7;
+
+response iterate_resp {
+	required u32 result = 1;
+	optional u32 unit = 0x10;
+	optional u32 size = 0x11;
+} = 7;

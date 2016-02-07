@@ -1,0 +1,22 @@
+package ta228;
+
+const TA228_GET_SIZE = 1;
+const TA228_READ = 2;
+
+request get_size_req {
+	required u32 unit = 1;
+} = 1;
+
+request get_size_resp {
+	required u32 result = 1;
+	optional u32 size = 0x10;
+} = 1;
+
+request read_req {
+	required u32 unit = 1;
+} = 2;
+
+response read_resp {
+	required u32 result = 1;
+	required u8 data(65535) = 16;
+} = 2;
